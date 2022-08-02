@@ -13,9 +13,9 @@ class Data_Handler():
                 import zipfile
                 with zipfile.ZipFile(self.original_path, 'r') as zip_data:
                     zip_data.extractall(self.path)
-                    return self.extracted_data_path
             except:
                 raise ExtractionException()
+        return self.extracted_data_path
     
     @property
     def original_path(self):
