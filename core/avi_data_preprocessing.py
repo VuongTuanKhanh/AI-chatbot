@@ -1,7 +1,7 @@
 import os, json
 import pandas as pd
-from exception import EncoderException, PreprocessingException
-from data_preprocessing import Data_Preprocessing, TextHandler
+from core.exception import EncoderException, PreprocessingException
+from core.data_preprocessing import Data_Preprocessing, TextHandler
 
 class AVI_data_preprocessing(Data_Preprocessing, TextHandler):
     def json_encoder(self, intent, data):

@@ -1,5 +1,5 @@
 import json
-from exception import EncoderException, RemovePunctuationError
+from core.exception import EncoderException, RemovePunctuationError
 
 class Data_Preprocessing():
     def json_encoder(self, data):
