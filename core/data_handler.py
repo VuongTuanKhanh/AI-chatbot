@@ -1,30 +1,25 @@
+import os
+from exception import ExtractionException
+
 class Data_Handler():
 
-    def __init__(self, path):
+    def __init__(self, path=''):
         self.path = path
 
-    def extract(self, path):
+    def extract(self):
         import os
-        if os.path.exists(self.original_path) and len(os.listdir(f'{self.path}/data')) == 2:
-            import zipfile
-            with zipfile.ZipFile(self.original_path, 'r') as zip_data:
-                zip_data.extractall(self.path)
-
-    def json_encoder(self, intent, data):
-        batch_data = []
-        for e in data:
-            parts = []
-            for p in e["data"]:
-                parts.append(p["text"])
-            batch_data.append({
-                "intent": intent,
-                "text": "".join(parts)
-            })
-        return batch_data
+        if os.path.exists(self.original_path) and len(os.listdir(f'{self.path}/data')) == 1:
+            try:
+                import zipfile
+                with zipfile.ZipFile(self.original_path, 'r') as zip_data:
+                    zip_data.extractall(self.path)
+                    return self.extracted_data_path
+            except:
+                raise ExtractionException()
     
     @property
     def original_path(self):
-        return f'{self.path}/data.zip'
+        return f'{self.path}/data/original.zip'
 
 
     @property
