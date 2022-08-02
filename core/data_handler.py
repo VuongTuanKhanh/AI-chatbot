@@ -1,8 +1,11 @@
 class Data_Handler():
 
+    def __init__(self, path):
+        self.path = path
+
     def extract(self, path):
         import os
-        if os.path.exists(self.original_path) and len(os.listdir(self.path)) == 2:
+        if os.path.exists(self.original_path) and len(os.listdir(f'{self.path}/data')) == 2:
             import zipfile
             with zipfile.ZipFile(self.original_path, 'r') as zip_data:
                 zip_data.extractall(self.path)
